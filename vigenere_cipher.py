@@ -9,15 +9,28 @@ Weakness: If someone finds key length then this can be broken.
 from tkinter import *
 
 window = Tk()
-window.geometry("400x500")
+window.geometry("800x400")
 window.title("vigenere cipher")
-label = Label(window, text="Welcome to the vigenere cipher")
-message_entered = Entry(window, bg="teal", width=40)
-key_entered = Entry(window, bg="teal", width=40, )
-label.pack()
-message_entered.pack()
-key_entered.pack()
-
+intro = Label(window, text="Welcome to the vigenere cipher", font=("Arial", 12))
+message_canva = Canvas(window,width=400,height=400,bg="teal")
+message_label = Label(window, text="message :", font=("Arial", 12))
+message_entered = Entry(window, bg="grey", width=30, font=("Arial", 12))
+key_label = Label(window, text="key :", font=("Arial", 12))
+key_entered = Entry(window, bg="grey", width=30, font=("Arial", 12))
+encrypted_label = Label(window, text="Encrypted :", font=("Arial", 12))
+decrypted_label = Label(window, text="Decrypted :", font=("Arial", 12))
+intro.place(x=500, y=10)
+message_canva.place(x=0,y=0)
+message_label.place(x=10, y=60)
+message_entered.place(x=90, y=60)
+key_label.place(x=50, y=100)
+key_entered.place(x=90, y=100)
+encrypted_label.place(x=420, y=60)
+encrypted_message = Entry(window, bg="grey", width=30, font=("Arial", 12))
+encrypted_message.place(x=510, y=60)
+decrypted_label.place(x=420, y=100)
+decrypted_message = Entry(window, bg="grey", width=30, font=("Arial", 12))
+decrypted_message.place(x=510, y=100)
 alphabet = "abcdefghijklmnopqrstuvwxyz "
 
 letter_to_index = dict(zip(alphabet, range(len(alphabet))))
@@ -60,20 +73,27 @@ def display_encrypted():
     message = message_entered.get()
     key = key_entered.get()
     encrypted = encrypt(message, key)
-    encrypted_message = Label(window, text=encrypted)
-    encrypted_message.pack()
+    encrypted_message.insert(0, encrypted)
 
 
 def display_decrypted():
     message = message_entered.get()
     key = key_entered.get()
     decrypted = decrypt(message, key)
-    decrypted_message = Label(window, text=decrypted)
-    decrypted_message.pack()
+    decrypted_message.insert(0, decrypted)
 
 
-encrypt_button = Button(window, text="Encrypt", command=display_encrypted)
-decrypt_button = Button(window, text="Decrypt", command=display_decrypted)
-encrypt_button.pack()
-decrypt_button.pack()
+def clear():
+    message_entered.delete(0, END)
+    encrypted_message.delete(0, END)
+    decrypted_message.delete(0, END)
+    key_entered.delete(0, END)
+
+
+encrypt_button = Button(window, text="Encrypt", width=10, bg="green", command=display_encrypted, font=("Arial", 12))
+decrypt_button = Button(window, text="Decrypt", width=10, bg="yellow", command=display_decrypted, font=("Arial", 12))
+clear_button = Button(window, text="Decrypt", width=10, bg="red", command=clear, font=("Arial", 12))
+encrypt_button.place(x=100, y=140)
+decrypt_button.place(x=250, y=140)
+clear_button.place(x=580, y=140)
 mainloop()
