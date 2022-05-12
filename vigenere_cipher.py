@@ -92,7 +92,7 @@ def clear():
 
 encrypt_button = Button(window, text="Encrypt", width=10, bg="green", command=display_encrypted, font=("Arial", 12))
 decrypt_button = Button(window, text="Decrypt", width=10, bg="yellow", command=display_decrypted, font=("Arial", 12))
-clear_button = Button(window, text="Decrypt", width=10, bg="red", command=clear, font=("Arial", 12))
+clear_button = Button(window, text="Clear", width=10, bg="red", command=clear, font=("Arial", 12))
 encrypt_button.place(x=100, y=140)
 decrypt_button.place(x=250, y=140)
 clear_button.place(x=580, y=140)
