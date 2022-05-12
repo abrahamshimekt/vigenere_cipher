@@ -1,5 +1,5 @@
 # vigenere cipher implementation using python
-## The App has tkinter gui to encrypt and decrypt the input message and also to diplay encrypted and decrypted messages
+## The App has tkinter gui to encrypt and decrypt the input message and also to display encrypted and decrypted messages
 ## """
 Vigenère cipher is one of the simplest that employs a form of polyalphabetic substitution (each letter is assigned
 more than one substitute).
